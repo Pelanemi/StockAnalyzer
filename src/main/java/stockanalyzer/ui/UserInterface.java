@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 
 import stockanalyzer.ctrl.Controller;
+import yahooApi.yahooFinanceIOException;
 
 public class UserInterface 
 {
@@ -13,21 +14,29 @@ public class UserInterface
 	private Controller ctrl = new Controller();
 
 	public void getDataFromCtrl1(){
-		ctrl.process("ABC");
+		try {
+			ctrl.process("AAPL");	//starting process method from controller class
+		} catch (yahooFinanceIOException e) {
+			e.printStackTrace(); 		//prints the throwable along with other details like the line number and class name where the exception occurred
+		}
+
 	}
 
 	public void getDataFromCtrl2(){
+		try {
+			ctrl.process("AMZN");
+		} catch (yahooFinanceIOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public void getDataFromCtrl3(){
+		try {
+			ctrl.process("TSLA");
+		} catch (yahooFinanceIOException e) {
+			e.printStackTrace();
+		}
 
-	}
-	public void getDataFromCtrl4(){
-
-	}
-	
-	public void getDataForCustomInput() {
-		
 	}
 
 
@@ -37,8 +46,6 @@ public class UserInterface
 		menu.insert("a", "Choice 1", this::getDataFromCtrl1);
 		menu.insert("b", "Choice 2", this::getDataFromCtrl2);
 		menu.insert("c", "Choice 3", this::getDataFromCtrl3);
-		menu.insert("d", "Choice User Imput:",this::getDataForCustomInput);
-		menu.insert("z", "Choice User Imput:",this::getDataFromCtrl4);
 		menu.insert("q", "Quit", null);
 		Runnable choice;
 		while ((choice = menu.exec()) != null) {
