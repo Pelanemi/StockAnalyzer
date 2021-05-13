@@ -52,7 +52,7 @@ public class YahooFinance {
         reader.close();
         return jo;
     }
-
+    /* THIS METHOD HAS NO USE
     public void fetchAssetName(Asset asset) throws yahooFinanceIOException {
         YahooFinance yahoo = new YahooFinance();
         List<String> symbols = new ArrayList<>();
@@ -62,6 +62,7 @@ public class YahooFinance {
         JsonObject jo = yahoo.convert(jsonResponse);
         asset.setName(extractName(jo));
     }
+    */
 
     private String extractName(JsonObject jo) {
         String returnName = "";

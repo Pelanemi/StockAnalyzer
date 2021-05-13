@@ -1,4 +1,5 @@
 package stockanalyzer.ctrl;
+import stockanalyzer.download.Downloader;
 
 import yahooApi.yahooFinanceIOException;
 import yahoofinance.Stock;
@@ -7,6 +8,7 @@ import yahoofinance.histquotes.Interval;
 
 import java.io.IOException;
 import java.util.Calendar;
+import java.util.List;
 
 
 public class Controller {
@@ -75,9 +77,14 @@ public class Controller {
 	
 
 	public Object getData(String searchString) {
-
-		
+		/*YahooFinance yahoofinance = new YahooFinance();
+		YahooResponse yahooresponse = yahoofinance.getCurrentData(Arrays.asList(searchString.split(",")));
+		return yahooresponse.getQuoteResponse();*/
 		return null;
+	}
+
+	public void downloadTickers(List<String> tickers, Downloader downloader) throws yahooFinanceIOException {
+		downloader.process(tickers);
 	}
 
 
